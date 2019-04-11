@@ -16,7 +16,7 @@ class BooksContainer extends Component {
   render(){
     let allBooks = this.state.books.map(book => <BookCard book={book}/>)
     return (
-      <h1>Books</h1>
+      allBooks
     )
   }
 

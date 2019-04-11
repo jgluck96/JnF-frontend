@@ -13,3 +13,14 @@
 .navbar li + li {
     margin-left:0px;
 }
+
+.bookcontainer {
+  flex-wrap: wrap;
+  width: 200px;
+  border: solid 1px black;
+  margin: 5px;
+}
+
+.book {
+  width: 100%;
+}
