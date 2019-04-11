@@ -5,12 +5,16 @@ import App from './App';
 import SignUp from './components/signup'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
+import BooksContainer from './containers/booksContainer'
+import Home from './components/home'
 
 ReactDOM.render(
   <Router>
   <App />
     <div style={{margin: '60px 0px 0px 0px'}}>
+    <Route path="/" component={Home} />
     <Route path="/sign-up/" component={SignUp} />
+    <Route path="/browse-books/" component={BooksContainer} />
     </div>
   </Router>
   , document.getElementById('root'));
