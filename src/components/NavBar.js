@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Profile from './profile'
 import Search from './search'
 import SignUp from './signup'
-
+import Cart from './cart'
 
 const NavBar = () => {
 
@@ -50,8 +50,16 @@ const NavBar = () => {
                   </NavLink>
                 </div>
               </li>
+              <li>
+                <div>
+                  <NavLink style={link} to="/user/:id">
+                      Account
+                  </NavLink>
+                </div>
+              </li>
             </ul>
           </div>
+          <Cart />
         </nav>
       </div>
 

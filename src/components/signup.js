@@ -24,10 +24,10 @@ class SignUp extends Component {
       },
       body: JSON.stringify(this.state)
     }).then(this.setState({
-      first_name: '',
-      last_name: '',
-      age: '',
-      email: ''
+      name: '',
+      address: '',
+      email: '',
+      password: ''
     }))
   }
 
