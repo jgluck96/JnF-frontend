@@ -19,7 +19,6 @@ const NavBar = (props) => {
 
       <div style={{padding: '12px', background: 'white'}}>
         <nav className="navbar">
-        <Search />
           <div>
             <ul style={{display:'inline-block'}}>
               <li>
