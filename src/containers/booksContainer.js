@@ -10,14 +10,15 @@ class BooksContainer extends Component {
   componentDidMount(){
     fetch('http://localhost:3000/books')
     .then(res => res.json())
-    .then(books => this.setState({books}))
+    .then(books => this.setState({books:books}))
   }
 
   render(){
-    let allBooks = this.state.books.map(book => <BookCard book={book}/>)
     return (
       <div className='bookcontainer'>
-      {allBooks}
+        {this.state.books.map(bookObj=> {
+          return <BookCard addToCart={this.props.addToCart} book={bookObj}/>
+        })}
       </div>
     )
   }

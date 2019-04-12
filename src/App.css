@@ -36,8 +36,25 @@
   padding-right: 5px;
 }
 
+.cartDiv {
+  float: right;
+  width: 7%
+}
+
 .buybutton {
   width: 50%;
   color: red;
   background-color: skyblue;
+}
+
+.Cartbtn {
+  border: none;
+  color: white;
+  padding: 1px 1px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.icon {
+  color: red
 }

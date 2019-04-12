@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { BrowserRouter as NavLink } from "react-router-dom";
+// import Checkout from './checkout'
 
 class Cart extends Component {
+
   render() {
     return(
-      <div style={{float: 'left', width: '190px'}}>
-        <NavLink>
-          <i src="https://banner2.kisspng.com/20171217/01f/shopping-cart-png-5a364b6d3217e8.4884266315135076932052.jpg"></i>
-        </NavLink>
+      <div className="cartDiv">
+        <button onClick={this.checkout} className="Cartbtn"><i className="fa fa-shopping-cart icon"></i></button>
+        <span>{this.props.cart.length}</span>
       </div>
     )
   }

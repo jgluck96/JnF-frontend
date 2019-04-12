@@ -5,7 +5,7 @@ import Search from './search'
 import SignUp from './signup'
 import Cart from './cart'
 
-const NavBar = () => {
+const NavBar = (props) => {
 
   const link = {
   width: '100px',
@@ -58,8 +58,8 @@ const NavBar = () => {
                 </div>
               </li>
             </ul>
+                <Cart cart={props.cart} />
           </div>
-          <Cart />
         </nav>
       </div>
 
