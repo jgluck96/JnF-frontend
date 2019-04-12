@@ -58,7 +58,9 @@ const NavBar = (props) => {
                 </div>
               </li>
             </ul>
+              <NavLink to='/cart'>
                 <Cart cart={props.cart} />
+              </NavLink>
           </div>
         </nav>
       </div>

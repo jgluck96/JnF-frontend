@@ -3,9 +3,9 @@ import Header from './components/header'
 import './App.css';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import BooksContainer from './containers/booksContainer'
-import Checkout from './components/checkout'
-import Home from './components/checkout'
+import Home from './components/home'
 import SignUp from './components/signup'
+import CartContainer from './containers/cartcontainer'
 
 
 class App extends Component {
@@ -20,34 +20,33 @@ class App extends Component {
     }))
   }
 
-  // cart = () => {
-  //   return this.state.cart
-  // }
 
   render() {
     return (
-      <Router>
       <div>
         <Header cart={this.state.cart}/>
           <div style={{margin: '60px 0px 0px 0px'}}>
             <Switch>
+              <Route exact path="/" component={Home} />
               <Route
-                path="/browse-books/"
-                render={() => (
-                  <BooksContainer addToCart={this.addToCart}/>
-                )}
+              exact path="/browse-books"
+              render={() => (
+                <BooksContainer addToCart={this.addToCart}/>
+              )}
               />
-              <Route path="/" component={Home} />
-              <Route path="/sign-up/" component={SignUp} />
-              <Route path="/browse-books/" component={BooksContainer} />
+              <Route exact path="/sign-up" component={SignUp} />
+              <Route exact path="/log-in" component={BooksContainer} />
+              <Route
+              exact path="/cart"
+              render={() => (
+                <CartContainer cart={this.state.cart}/>
+              )}
+              />
             </Switch>
           </div>
       </div>
-      </Router>
     );
   }
 }
 
 export default App;
-
-// <Checkout cart={this.state.cart}/>

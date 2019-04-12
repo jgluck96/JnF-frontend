@@ -17,7 +17,7 @@ class BooksContainer extends Component {
     return (
       <div className='bookcontainer'>
         {this.state.books.map(bookObj=> {
-          return <BookCard addToCart={this.props.addToCart} book={bookObj}/>
+          return <BookCard key={bookObj.id} addToCart={this.props.addToCart} book={bookObj}/>
         })}
       </div>
     )
