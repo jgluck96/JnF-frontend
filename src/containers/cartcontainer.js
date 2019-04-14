@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
-import { BrowserRouter as NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import CheckoutCard from '../components/checkoutCard'
 
-class Cart extends Component {
+class CartContainer extends Component {
+
+  userValidation = user => {
+    if (user.name) {
+      this.props.history.push("/checkout")
+    } else {
+      this.props.history.push("/sign-up")
+    }
+  }
+
   render() {
     const books = this.props.cart.map(bookObj=> {
       return <CheckoutCard key={bookObj.id} book={bookObj}/>
@@ -16,7 +25,12 @@ class Cart extends Component {
           {this.props.cart.map(bookObj=> {
             return <CheckoutCard key={bookObj.id} book={bookObj}/>
           })}
-          <button>Checkout</button>
+          <div>
+            <p>Subtotal: ${Number(this.props.cart.reduce((acc, {price}) => acc + price, 0).toFixed(2))}</p>
+            <p>Tax: 4%</p>
+            <p>Total: ${Number((Number(this.props.cart.reduce((acc, {price}) => acc + price, 0).toFixed(2))*0.04) + Number(this.props.cart.reduce((acc, {price}) => acc + price, 0).toFixed(2))).toFixed(2)}</p>
+            <button onClick={() => this.userValidation(this.props.user)}>Checkout</button>
+          </div>
         </div>
         :
         <h2>You have no items in your cart</h2>
@@ -27,4 +41,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart
+export default withRouter(CartContainer)

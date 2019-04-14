@@ -2,18 +2,17 @@ import React, { Component } from 'react'
 import { BrowserRouter as NavLink } from "react-router-dom";
 import CheckoutCard from './checkoutCard'
 
-class Cart extends Component {
+class Checkout extends Component {
   render() {
-    console.log("checkout props", this.props.cart);
     return(
       <div>
-      <h1>Cart</h1>
+      <h1>visa</h1>
       </div>
     )
   }
 }
 
-export default Cart
+export default Checkout
 // <div className='bookcontainer'>
 //   {this.props.cart.map(bookObj=> {
   //     return <CheckoutCard book={bookObj}/>

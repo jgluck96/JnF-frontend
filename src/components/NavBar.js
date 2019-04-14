@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
-import Profile from './profile'
 import Search from './search'
 import SignUp from './signup'
 import Cart from './cart'
@@ -51,7 +50,7 @@ const NavBar = (props) => {
               </li>
               <li>
                 <div>
-                  <NavLink style={link} to="/user/:id">
+                  <NavLink style={link} to="/account">
                       Account
                   </NavLink>
                 </div>

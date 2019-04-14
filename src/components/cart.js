@@ -7,7 +7,7 @@ class Cart extends Component {
   render() {
     return(
       <div className="cartDiv">
-        <button onClick={this.checkout} className="Cartbtn"><i className="fa fa-shopping-cart icon"></i></button>
+        <button className="Cartbtn"><i className="fa fa-shopping-cart icon"></i></button>
         <span>{this.props.cart.length}</span>
       </div>
     )
