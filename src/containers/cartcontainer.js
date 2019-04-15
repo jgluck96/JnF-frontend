@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
 import CheckoutCard from '../components/checkoutCard'
+import BillingForm from '../components/billingForm'
 
 class CartContainer extends Component {
 
+  state ={
+    renderForm: false
+  }
+
   userValidation = user => {
     if (user.name) {
-      this.props.history.push("/checkout")
+      this.setState({renderForm: true}, () => console.log(this.state.renderForm))
     } else {
       this.props.history.push("/sign-up")
     }
@@ -30,6 +35,13 @@ class CartContainer extends Component {
             <p>Tax: 4%</p>
             <p>Total: ${Number((Number(this.props.cart.reduce((acc, {price}) => acc + price, 0).toFixed(2))*0.04) + Number(this.props.cart.reduce((acc, {price}) => acc + price, 0).toFixed(2))).toFixed(2)}</p>
             <button onClick={() => this.userValidation(this.props.user)}>Checkout</button>
+          </div>
+          <div>
+          {this.state.renderForm ?
+            <BillingForm cart={this.props.cart} user={this.props.user}/>
+          :
+            null
+          }
           </div>
         </div>
         :
