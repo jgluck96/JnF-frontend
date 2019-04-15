@@ -34,6 +34,13 @@ class BooksContainer extends Component {
     // }
   }
 
+  bookHandler = (book) => {
+    // console.log("clicked on book", book)
+    // this.setState({filtered: book})
+    this.props.bookShow(book)
+    this.props.history.push(`/books/${book.id}`)
+  }
+
   render(){
     // console.log(this.state.filtered);
     let searched = this.state.books.filter(book => book.title.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || book.author.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
@@ -43,10 +50,10 @@ class BooksContainer extends Component {
       <Search searchHandler={this.searchHandler} searched={this.state.searched} searchTerm={this.state.searchTerm} sorting={this.sort} books={this.state.books} filtered={this.state.filtered}/>
         {this.state.searchTerm ?
           (searched.map(bookObj => {
-            return <BookCard key={bookObj.id} addToCart={this.props.addToCart} book={bookObj}/>
+            return <BookCard key={bookObj.id} bookHandler={this.bookHandler} addToCart={this.props.addToCart} book={bookObj}/>
           }))
           : (this.state.filtered.map(bookObj=> {
-          return <BookCard key={bookObj.id} addToCart={this.props.addToCart} book={bookObj}/>
+          return <BookCard key={bookObj.id} bookHandler={this.bookHandler} addToCart={this.props.addToCart} book={bookObj}/>
         }))}
 
       </div>
@@ -54,4 +61,4 @@ class BooksContainer extends Component {
   }
 
 }
-export default BooksContainer;
+export default withRouter(BooksContainer)

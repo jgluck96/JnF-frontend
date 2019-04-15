@@ -8,13 +8,15 @@ import SignUp from './components/signup'
 import Checkout from './components/checkout'
 import Login from './components/login'
 import CartContainer from './containers/cartcontainer'
+import BookShow from './components/bookShow'
 
 
 class App extends Component {
 
   state = {
     user: {},
-    cart: []
+    cart: [],
+    bookShow: ''
   }
 
   // componentDidMount() {
@@ -50,6 +52,10 @@ class App extends Component {
     }))
   }
 
+  bookShow = (book) => {
+    this.setState({bookShow: book})
+  }
+
 
   render() {
     return (
@@ -61,7 +67,13 @@ class App extends Component {
               <Route
               exact path="/browse-books"
               render={() => (
-                <BooksContainer addToCart={this.addToCart}/>
+                <BooksContainer bookShow={this.bookShow} addToCart={this.addToCart}/>
+              )}
+              />
+              <Route
+              exact path="/books/:id"
+              render={() => (
+                <BookShow bookShow={this.state.bookShow} addToCart={this.addToCart}/>
               )}
               />
               <Route exact path="/sign-up" render={() => <SignUp submitHandler={this.createUser}/>}/>
