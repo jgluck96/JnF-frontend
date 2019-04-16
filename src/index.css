@@ -6,6 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://images7.alphacoders.com/573/573647.jpg");
+  background-position: center;
 }
 
 code {
