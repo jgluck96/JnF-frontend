@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import BookCard from '../components/bookCard';
 import Search from '../components/search';
 import { BrowserRouter as Router, Route, Link, Switch, withRouter } from "react-router-dom";
-
+import $ from 'jquery'
 
 class BooksContainer extends Component {
 
@@ -41,6 +41,23 @@ class BooksContainer extends Component {
     this.props.history.push(`/books/${book.id}`)
   }
 
+  scrollUp = e => {
+    // e.persist()
+    // e.screenY = 847
+    // console.log(e);
+      $(window).scroll(function() {
+      var height = $(window).scrollTop();
+      if (height > 100) {
+          $('#scrollUpContainer').fadeIn();
+      } else {
+          $('#scrollUpContainer').fadeOut();
+      }
+    });
+    e.preventDefault();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+  }
+
   render(){
     // console.log(this.state.filtered);
     let searched = this.state.books.filter(book => book.title.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || book.author.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
@@ -55,7 +72,10 @@ class BooksContainer extends Component {
           : (this.state.filtered.map(bookObj=> {
           return <BookCard key={bookObj.id} bookHandler={this.bookHandler} addToCart={this.props.addToCart} book={bookObj}/>
         }))}
-
+        <div id='scrollUpContainer'>
+          <div id='scrollUpCircle' className='upAndDown' onClick={this.scrollUp}>
+          </div>
+        </div>
       </div>
     )
   }

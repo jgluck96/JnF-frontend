@@ -117,23 +117,28 @@
   background-color: #2960FF; }
 
 
-  #scrollDownContainer {
+  #scrollUpContainer {
     width: 100%;
     flex-grow: 4;
+
+
   }
 
-  #scrollDownCircle {
+  #scrollUpCircle {
+    left: 93%;
+    top: 60px;
+    position: fixed;
     border-radius: 50%;
-    width: 5.5em;
-    height: 5.5em;
-    border: 1px solid black;
-    background-image: url("https://www.pinclipart.com/picdir/middle/17-178901_up-arrow-clip-art-scroll-top-arrow-top.png");
+    width: 5.1em;
+    height: 5.0em;
+    border: 0px solid black;
+    background-image: url("https://www.pinclipart.com/picdir/big/17-178901_up-arrow-clip-art-scroll-top-arrow-top.png");
     background-repeat: no-repeat;
     background-size: 100%;
     filter: opacity(85%);
     filter: hue-rotate(0deg);
-    filter: drop-shadow(1px 1px 15px blue);
-    opacity: 1; }
+    filter: drop-shadow(1px 10px 15px blue);
+    opacity: 0.8; }
 
   .upAndDown {
     animation: slowUpDown 3.8s;

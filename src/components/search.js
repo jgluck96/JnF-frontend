@@ -5,25 +5,18 @@ class Search extends Component {
 
   sortHandler = e => {
     switch (e.target.value) {
-      case 'Featured':
-        this.props.sorting(this.props.books)
-        break;
       case 'Price: Low to High':
-      // if (this.props.searchTerm) {
-      //   const lowHighBooks = this.props.searched.sort((a,b) => a.price.toString().localeCompare(b.price.toString(), undefined, {numeric: true}))
-      //   this.props.sorting(lowHighBooks);
-      // } else {
         const lowHighBooks = this.props.filtered.sort((a,b) => a.price.toString().localeCompare(b.price.toString(), undefined, {numeric: true}))
         this.props.sorting(lowHighBooks);
-      // }
         break;
       case 'Price: High to Low':
       const highLowBooks = this.props.filtered.sort((a,b) => b.price.toString().localeCompare(a.price.toString(), undefined, {numeric: true}))
       this.props.sorting(highLowBooks);
         break;
-      // case 'Newly Listed':
-      // this.props.sorting(this.props.books.slice(-5));
-      //   break;
+      case 'Alphabetical: (A-Z)':
+      const alphaBooks = this.props.filtered.sort((a,b) => a.title.localeCompare(b.title))
+      this.props.sorting(alphaBooks)
+        break;
     }
   }
 
@@ -34,11 +27,9 @@ class Search extends Component {
         <div>
           Sort By
           <select onChange={this.sortHandler}>
-            <option>Featured</option>
-            <option>Most popular</option>
+            <option>Alphabetical: (A-Z)</option>
             <option>Price: Low to High</option>
             <option>Price: High to Low</option>
-            <option>Newly Listed</option>
           </select>
         </div>
       </div>
