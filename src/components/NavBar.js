@@ -5,7 +5,6 @@ import SignUp from './signup'
 import Cart from './cart'
 
 const NavBar = (props) => {
-
   const link = {
   width: '100px',
   padding: '17px',
@@ -34,27 +33,41 @@ const NavBar = (props) => {
                   </NavLink>
                 </div>
               </li>
-              <li>
-                <div>
-                  <NavLink style={link} to="/sign-up/">
-                      Sign up
-                  </NavLink>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <NavLink style={link} to="/log-in/">
-                      Log in
-                  </NavLink>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <NavLink style={link} to="/account">
-                      Account
-                  </NavLink>
-                </div>
-              </li>
+              {!props.user ?
+              (<div style={{float: 'right'}}>
+                <li>
+                  <div>
+                    <NavLink style={link} to="/sign-up/">
+                        Sign up
+                    </NavLink>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <NavLink style={link} to="/log-in/">
+                        Log in
+                    </NavLink>
+                  </div>
+                </li>
+              </div>)
+              :
+              (<div style={{float: 'right'}}>
+                <li>
+                  <div>
+                    <NavLink style={link} to="/account">
+                        Account
+                    </NavLink>
+                  </div>
+                </li>
+                <li onClick={props.logout}>
+                  <div>
+                    <NavLink style={link} to="/">
+                        Logout
+                    </NavLink>
+                  </div>
+                </li>
+              </div>)
+              }
             </ul>
               <NavLink to='/cart'>
                 <Cart cart={props.cart} />

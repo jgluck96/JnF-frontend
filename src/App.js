@@ -7,30 +7,32 @@ import Home from './components/home'
 import SignUp from './components/signup'
 import Checkout from './components/checkout'
 import Login from './components/login'
+import ThankYou from './components/thankYou'
 import CartContainer from './containers/cartcontainer'
-import BookShow from './components/bookShow'
 
 
 class App extends Component {
 
   state = {
-    user: {},
-    cart: [],
-    bookShow: ''
+    user: '',
+    cart: []
   }
 
-  // componentDidMount() {
-  //   let token = localStorage.getItem("token")
-  //   console.log("app did mount", token)
-  //   fetch('http://localhost:3000/users', {
-  //     method: 'GET',
-  //     header: {
-  //       'content-type':'applicatin/json',
-  //       accept: 'applicatin/json',
-  //       authorization: `${token}`
-  //     }
-  //   })
-  // }
+  componentDidMount() {
+    let token = localStorage.getItem("token")
+    token ?
+      fetch('http://localhost:3000/get_user', {
+        method: 'GET',
+        headers: {
+          'content-type':'application/json',
+          accepts: 'application/json',
+          authorization: `${token}`
+        }
+      }).then(resp => resp.json())
+        .then(user => this.setState({user: user}))
+    :
+    this.setState({user: ''})
+  }
 
   createUser = userInfo => {
     fetch('http://localhost:3000/users',{
@@ -43,7 +45,10 @@ class App extends Component {
         user: {name: userInfo.name, address: userInfo.address, email: userInfo.email, password: userInfo.password}
       })
     }).then(resp => resp.json())
-      .then(user => this.setState({user: user}))
+      .then(user => {
+        this.setState({user: user})
+        localStorage.setItem("token", user.token)
+      })
   }
 
   addToCart = book => {
@@ -52,36 +57,36 @@ class App extends Component {
     }))
   }
 
-  bookShow = (book) => {
-    this.setState({bookShow: book})
+  logout = () => {
+    localStorage.removeItem("token")
+    this.setState({user: ''}, () => this.props.history.push("/"))
   }
 
+  clearCart = () => {
+    this.setState({cart: []})
+  }
 
   render() {
     return (
       <div>
-        <Header cart={this.state.cart}/>
+        <Header logout={this.logout} user={this.state.user} cart={this.state.cart}/>
           <div style={{margin: '60px 0px 0px 0px'}}>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route
               exact path="/browse-books"
               render={() => (
-                <BooksContainer bookShow={this.bookShow} addToCart={this.addToCart}/>
-              )}
-              />
-              <Route
-              exact path="/books/:id"
-              render={() => (
-                <BookShow bookShow={this.state.bookShow} addToCart={this.addToCart}/>
+                <BooksContainer addToCart={this.addToCart}/>
               )}
               />
               <Route exact path="/sign-up" render={() => <SignUp submitHandler={this.createUser}/>}/>
               <Route exact path="/log-in" component={Login} />
+              <Route exact path="/thank-you" component={ThankYou} />
               <Route
               exact path="/cart"
               render={() => (
                 <CartContainer
+                clearCart={this.clearCart}
                 user={this.state.user}
                 cart={this.state.cart}/>
               )}

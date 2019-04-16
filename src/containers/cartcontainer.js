@@ -10,7 +10,7 @@ class CartContainer extends Component {
   }
 
   userValidation = user => {
-    if (user.name) {
+    if (user.email) {
       this.setState({renderForm: true}, () => console.log(this.state.renderForm))
     } else {
       this.props.history.push("/sign-up")
@@ -38,7 +38,7 @@ class CartContainer extends Component {
           </div>
           <div>
           {this.state.renderForm ?
-            <BillingForm cart={this.props.cart} user={this.props.user}/>
+            <BillingForm cart={this.props.cart} clearCart={this.props.clearCart} user={this.props.user}/>
           :
             null
           }

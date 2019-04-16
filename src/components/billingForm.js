@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import { withRouter } from "react-router-dom";
+
 
 class BillingForm extends Component {
 
@@ -7,8 +9,6 @@ class BillingForm extends Component {
       return bookObj.id
     })
 
-    console.log(ids);
-    console.log(this.props.user.id);
     fetch('http://localhost:3000/sales', {
       method: 'POST',
       headers: {
@@ -19,7 +19,8 @@ class BillingForm extends Component {
         book_id: ids
 
       })
-    })
+    }).then(this.props.clearCart)
+      .then(this.props.history.push("/thank-you"))
   }
 
   render(){
@@ -51,4 +52,4 @@ class BillingForm extends Component {
 
 }
 
-export default BillingForm
+export default withRouter(BillingForm)
