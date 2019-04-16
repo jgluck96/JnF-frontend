@@ -9,13 +9,16 @@ import Checkout from './components/checkout'
 import Login from './components/login'
 import ThankYou from './components/thankYou'
 import CartContainer from './containers/cartcontainer'
+import BookShow from './components/bookShow'
+import UserProfile from './components/UserProfile'
 
 
 class App extends Component {
 
   state = {
     user: '',
-    cart: []
+    cart: [],
+    bookShow: ''
   }
 
   componentDidMount() {
@@ -51,10 +54,19 @@ class App extends Component {
       })
   }
 
+  bookShow = (book) => {
+    this.setState({bookShow: book})
+  }
+
   addToCart = book => {
     this.setState(prevState => ({
       cart: [...prevState.cart, book]
     }))
+  }
+
+  loginUser = user => {
+    console.log(user);
+    this.setState({user: user})
   }
 
   logout = () => {
@@ -76,11 +88,16 @@ class App extends Component {
               <Route
               exact path="/browse-books"
               render={() => (
-                <BooksContainer addToCart={this.addToCart}/>
+                <BooksContainer bookShow={this.bookShow} addToCart={this.addToCart}/>
               )}
               />
+              <Route
+              exact path="/books/:id"
+              render={() => (
+                <BookShow bookShow={this.state.bookShow} addToCart={this.addToCart}/>
+              )}/>
               <Route exact path="/sign-up" render={() => <SignUp submitHandler={this.createUser}/>}/>
-              <Route exact path="/log-in" component={Login} />
+              <Route exact path="/log-in" render={() => <Login loginUser={this.loginUser}/>} />
               <Route exact path="/thank-you" component={ThankYou} />
               <Route
               exact path="/cart"
@@ -94,7 +111,7 @@ class App extends Component {
               <Route
               exact path="/account"
               render={() => (
-                <CartContainer
+                <UserProfile
                 user={this.state.user}
                 cart={this.state.cart}/>
               )}
@@ -114,16 +131,3 @@ class App extends Component {
 }
 
 export default withRouter(App);
-
-
-
-
-// <Route exact path="/books/:id"
-// render={routerProps => {
-//   let id = parseInt(routerProps.match.params.id)
-//   let book = this.state.books.find(
-//     bookObj => bookObj.id === id
-//   )
-//   return <BookProfile book={book} />
-// }}
-// />

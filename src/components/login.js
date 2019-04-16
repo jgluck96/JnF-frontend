@@ -17,10 +17,24 @@ class Login extends Component {
 
   submitHandler = e => {
     e.preventDefault()
+    const email = this.state.email
+    const pass = this.state.password
+
+    fetch('http://localhost:3000/users')
+      .then(resp => resp.json())
+      .then(users => {
+        const foundUser = users.find(userObj => userObj.email === email)
+        if (foundUser && foundUser.password === pass) {
+          console.log('logged in ');
+          this.props.loginUser(foundUser)
+        } else {
+          this.props.history.push("/sign-up")
+        }
+      })
     this.setState({
       email: '',
       password: ''
-    },  () => this.props.history.push("/"))
+    })
   }
 
   render(){

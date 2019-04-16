@@ -50,7 +50,7 @@ class BooksContainer extends Component {
       <Search searchHandler={this.searchHandler} searched={this.state.searched} searchTerm={this.state.searchTerm} sorting={this.sort} books={this.state.books} filtered={this.state.filtered}/>
         {this.state.searchTerm ?
           (searched.map(bookObj => {
-            return <BookCard key={bookObj.id} bookHandler={this.bookHandler} addToCart={this.props.addToCart} book={bookObj}/>
+            return <BookCard bookHandler={this.bookHandler} key={bookObj.id} bookHandler={this.bookHandler} addToCart={this.props.addToCart} book={bookObj}/>
           }))
           : (this.state.filtered.map(bookObj=> {
           return <BookCard key={bookObj.id} bookHandler={this.bookHandler} addToCart={this.props.addToCart} book={bookObj}/>
