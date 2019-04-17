@@ -14,23 +14,21 @@ const UserProfile = props => {
   	}
 }
 
-// {props.cart.length > 0 ?
-  //
-  //   <div id='circleHolder'>
-  //   {props.cart.map(bookObj => {
-    //     return <BookFloat img={bookObj.img_url} />
-    //   })}
-    // </div>
-    // :
-    // <h3>Go Buy Books and Be Smart</h3>
-    // }
+
     return(
-      <div className="userShow">
+      <div >
       <div>
-      <h1>Books You Want</h1>
-      <h2>{props.user.name}</h2>
-      <h3>{props.user.email}</h3>
-      <h4>{props.user.address}</h4>
+      <h1 className="userShow">Books You Want</h1>
+      {props.cart.length > 0 ?
+
+          <div id='circleHolder'>
+          {props.cart.map(bookObj => {
+              return <BookFloat img={bookObj.img_url} />
+            })}
+          </div>
+          :
+          null
+          }
       </div>
       </div>
     )

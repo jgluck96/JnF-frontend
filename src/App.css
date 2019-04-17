@@ -240,9 +240,20 @@
 #circleHolder{
   position: absolute;
   height: 96%;
-  width: 100%;
   opacity: 0.98;
-  z-index: 1;
+  width:100%
+  /* z-index: 1;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin-left: 1%;
+  margin-right: 1%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.5); */
 }
 
 .mini {
