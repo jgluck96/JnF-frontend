@@ -27,6 +27,33 @@
   float: left;
 }
 
+.carcont{
+  height: 100%;
+  margin: 3.5%;
+}
+
+.carcard {
+  background-color: white;
+  width: 15%;
+  height: 80%;
+  border: solid 1px black;
+  margin: 1%;
+  float: left;
+}
+
+.carimage {
+  width: 99.4%;
+  height: 50%;
+}
+
+.cartitle {
+  height: 30px;
+}
+
+.author{
+  margin-top: -10px
+}
+
 .bookimage {
   width: 100%;
   height: 300px;
@@ -56,14 +83,95 @@
 }
 
 .buybutton {
-  width: 50%;
+  width: 20%;
   color: red;
-  background-color: skyblue;
+  float: right;
+  background-color: white;
+}
+
+.carLabel{
+  left:10%;
+  font-weight: bold;
+  font-size: 30px;
+  position: absolute;
+}
+
+#backBtn{
+  color: black
+}
+
+#backBtnCont{
+  background-color: white;
+  margin-left: 2%;
+}
+
+#backBtnCont:hover{
+  background: rgba(255, 255, 255, 0.5)
+}
+
+#cartNo{
+  color: white
+}
+
+.homecar{
+  background-color: white;
+  width: 100%;
+  height: 30%;
+  position: absolute
+}
+
+.prevBtnCont{
+    left: 0;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.prevBtn{
+  height: 20px;
+    width: 20px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-20%, -50%) rotate(225deg);
+    -ms-transform: translate(-20%, -50%) rotate(225deg);
+    -o-transform: translate(-20%, -50%) rotate(225deg);
+    transform: translate(-20%, -50%) rotate(225deg);
+
+}
+
+.nxtBtnCont{
+  right: 0;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.nxtBtn{
+  height: 20px;
+    width: 20px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-70%, -50%) rotate(45deg);
+    -ms-transform: translate(-70%, -50%) rotate(45deg);
+    -o-transform: translate(-70%, -50%) rotate(45deg);
+    transform: translate(-70%, -50%) rotate(45deg);
 }
 
 .Cartbtn {
   border: none;
-  color: white;
+  background-color: transparent;
   padding: 1px 1px;
   font-size: 30px;
   cursor: pointer;
@@ -77,11 +185,26 @@
 }
 
 .bookShow {
-  background-color: white;
+  width: 50%;
+  float: right;
+  padding: 10px;
+  border: 2px solid black;
+  /* border-radius: 5%; */
+
+  background: rgba(255, 255, 255, 0.5);
 }
 
-.showbox img {
+.showbox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgg {
   float: left;
+  width:400px;
+  height:500px
 }
 
 .icon {

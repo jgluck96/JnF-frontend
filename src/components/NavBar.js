@@ -15,7 +15,7 @@ const NavBar = (props) => {
 
     return(
 
-      <div style={{padding: '12px', background: 'white'}}>
+      <div style={{padding: '12px'}}>
         <nav className="navbar">
           <div>
             <ul style={{display:'inline-block'}}>

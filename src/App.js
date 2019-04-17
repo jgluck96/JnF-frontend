@@ -18,10 +18,21 @@ class App extends Component {
   state = {
     user: '',
     cart: [],
-    bookShow: ''
+    bookShow: '',
+    books: []
   }
 
   componentDidMount() {
+    fetch('http://localhost:3000/books')
+    .then(res => res.json())
+    .then(books => this.setState({books:books}))
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/books')
+    .then(res => res.json())
+    .then(books => this.setState({books:books}))
+    .then(() => {
     let token = localStorage.getItem("token")
     token ?
       fetch('http://localhost:3000/get_user', {
@@ -35,6 +46,7 @@ class App extends Component {
         .then(user => this.setState({user: user}))
     :
     this.setState({user: ''})
+    })
   }
 
   createUser = userInfo => {
@@ -55,6 +67,7 @@ class App extends Component {
   }
 
   bookShow = (book) => {
+    console.log(book);
     this.setState({bookShow: book})
   }
 
@@ -84,7 +97,7 @@ class App extends Component {
         <Header logout={this.logout} user={this.state.user} cart={this.state.cart}/>
           <div style={{margin: '60px 0px 0px 0px'}}>
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" render={() => <Home bookShow={this.bookShow} books={this.state.books}/>} />
               <Route
               exact path="/browse-books"
               render={() => (

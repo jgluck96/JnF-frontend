@@ -8,7 +8,7 @@ class Cart extends Component {
     return(
       <div className="cartDiv">
         <button className="Cartbtn"><i className="fa fa-shopping-cart icon"></i></button>
-        <span>{this.props.cart.length}</span>
+        <span id="cartNo">{this.props.cart.length}</span>
       </div>
     )
   }
