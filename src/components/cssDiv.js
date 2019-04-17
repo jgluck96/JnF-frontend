@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
+
 
 const CssDiv = props => {
 
@@ -23,7 +25,7 @@ const CssDiv = props => {
     return(
       <div className='upAndDown'>
       <div className='mini'>
-      <div style={link} onMouseOver={e => hover(e)}>
+      <div style={link} onMouseOver={() => props.history.push("/cart")}>
         <img src={props.img}></img>
       </div>
       </div>
@@ -31,4 +33,4 @@ const CssDiv = props => {
     )
 }
 
-export default CssDiv
+export default withRouter(CssDiv)
