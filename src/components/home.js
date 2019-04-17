@@ -20,7 +20,7 @@ class Home extends React.Component {
         <h3>All readers are welcome, please browse through our inventory</h3>
         <div className='homecar'>
         <label className='carLabel'>Most Popular</label>
-          <div className='prevBtnCont' onClick={() => this.setState({start: this.state.start -5,end: this.state.end -5 })}>
+          <div className='prevBtnCont' onClick={this.state.start >= 0 && this.state.start <= 5 ? () => this.setState({start: this.props.books.length - 5, end: this.props.books.length }) : () => this.setState({start: this.state.start -5,end: this.state.end -5 })}>
             <div className='prevBtn'></div>
           </div>
           <div className='carcont'>
@@ -28,7 +28,7 @@ class Home extends React.Component {
             return <CarCard bookShow={this.props.bookShow} key={bookObj.id} book={bookObj}/>
           }).slice(this.state.start,this.state.end)}
           </div>
-          <div className='nxtBtnCont' onClick={() => this.setState({start: this.state.start +5,end: this.state.end +5 })}>
+          <div className='nxtBtnCont' onClick={this.state.end <= this.props.books.length && this.state.end >= this.props.books.length ? () => this.setState({start: 0, end: 5}) : () => this.setState({start: this.state.start +5,end: this.state.end +5 })}>
             <div className='nxtBtn'></div>
           </div>
         </div>

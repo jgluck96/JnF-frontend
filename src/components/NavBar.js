@@ -5,13 +5,6 @@ import SignUp from './signup'
 import Cart from './cart'
 
 const NavBar = (props) => {
-  const link = {
-  width: '100px',
-  padding: '17px',
-  background: 'white',
-  textDecoration: 'none',
-  color: 'red',
-  }
 
     return(
 
@@ -21,14 +14,14 @@ const NavBar = (props) => {
             <ul style={{display:'inline-block'}}>
               <li>
                 <div>
-                  <NavLink style={link} to="/">
+                  <NavLink className="navLink" to="/">
                       Home
                   </NavLink>
                 </div>
               </li>
               <li>
                 <div>
-                  <NavLink style={link} to="/browse-books/">
+                  <NavLink className="navLink" to="/browse-books/">
                       Browse Books
                   </NavLink>
                 </div>
@@ -37,14 +30,14 @@ const NavBar = (props) => {
               (<div style={{float: 'right'}}>
                 <li>
                   <div>
-                    <NavLink style={link} to="/sign-up/">
+                    <NavLink className="navLink" to="/sign-up/">
                         Sign up
                     </NavLink>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <NavLink style={link} to="/log-in/">
+                    <NavLink className="navLink" to="/log-in/">
                         Log in
                     </NavLink>
                   </div>
@@ -54,14 +47,14 @@ const NavBar = (props) => {
               (<div style={{float: 'right'}}>
                 <li>
                   <div>
-                    <NavLink style={link} to="/account">
+                    <NavLink className="navLink" to="/account">
                         Account
                     </NavLink>
                   </div>
                 </li>
                 <li onClick={props.logout}>
                   <div>
-                    <NavLink style={link} to="/">
+                    <NavLink className="navLink" to="/">
                         Logout
                     </NavLink>
                   </div>
